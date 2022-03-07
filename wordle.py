@@ -1,4 +1,3 @@
-from gettext import find
 import random
 
 def choose_secret(filename):
@@ -44,18 +43,14 @@ def compare_words(word, secret):
   for letra_word in word:
     for letra_secret in secret:
       if letra_word == letra_secret:
+        pos_letra_word = word.index(letra_word)
+        pos_letra_secret = secret.index(letra_secret)
         same_letter += 1
-      
-      pos_word = find(letra_word)
-      
+        if pos_letra_word == pos_letra_secret:
+          same_position +=1
 
-  print(same_letter)
+  return same_letter, same_position
 
-compare_words("OILA", "SAPE")
-
-
-  
-  
 
 def print_word(word, same_letter_position, same_letter):
   """Dada una palabra, una lista same_position y otra lista same_letter, esta función creará un string donde aparezcan en mayúsculas las letras de la palabra que ocupen las posiciones de same_position, en minúsculas las letras de la palabra que ocupen las posiciones de same_letter y un guión (-) en el resto de posiciones
