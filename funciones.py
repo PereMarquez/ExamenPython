@@ -28,13 +28,17 @@ def add_client(clients_list,nif,name,address,phone,email):
       phone
       email
     """
-    clients_list[nif] = {
-        nif: {'name': name,
+    dic = {'name': name,
               'address': address,
               'phone': phone,
               'email': email
         }
-    }
+
+    clients_list[nif] = dic
+    print(clients_list)
+
+#PROBLEMA: Al imprimir el valor de una clase del diccionario nos aparecia un diccionario dentro de otro
+#SOLUCION: Se ha creado un diccionario con los valores del cliente y se ha añadido a una lista en la posicion del nif
     
 
 def repartir_cartas(cartas_iniciales,repeticiones):
