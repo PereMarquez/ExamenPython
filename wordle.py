@@ -1,4 +1,6 @@
 import random
+
+
 def choose_secret(filename):
   """Dado un nombre de fichero, esta función devuelve una palabra aleatoria de este fichero transformada a mayúsculas.
   Args:
@@ -6,31 +8,50 @@ def choose_secret(filename):
   Returns:
     secret: Palabra elegida aleatoriamente del fichero transformada a mayúsculas. Ej. "CREMA"
   """
-  #Abrimos el fichero en modo lectura
   f = open(filename, mode="rt", encoding="utf-8")
   
-  #Contamos el numero de lineas(palabras) que tiene
   longitud_fichero = 0
   for i in f:
     longitud_fichero += 1
 
+  print(longitud_fichero)
+  if longitud_fichero == 0:
+    raise ValueError("El fichero no tiene palabras")
+  
+  indice = random.randint(0,longitud_fichero)
 
-  #leemos 10 caracteres
-  texto = f.readline()
-  print("Leemos una línea: "+texto)
+  print(indice)
+  f.seek(indice)
+  secret = f.readline()
+  print(secret)
+ 
+  
 
 choose_secret("palabras_reduced.txt")
 
+  
     
-def compare_words():
-  """Dadas dos palabras en mayúsculas (word y secret), esta función calcula las posiciones de las letras de word que aparecen en la misma posición en secret, y las posiciones de las letras de word que aparecen en secret pero en una posición distinta.
-  Args:
-    word: Una palabra. Ej. "CAMPO"
-    secret: Una palabra. Ej. "CREMA"
-  Returns:
-    same_position: Lista de posiciones de word cuyas letras coinciden en la misma posición en secret. En el caso anterior: [0]
-    same_letter: Lista de posiciones de word cuyas letras están en secret pero en posiciones distintas. En el caso anterior: [1,2]
-  """
+def compare_words(word, secret):
+    """Dadas dos palabras en mayúsculas (word y secret), esta función calcula las posiciones de las letras de word que aparecen en la misma posición en secret, y las posiciones de las letras de word que aparecen en secret pero en una posición distinta.
+    Args:
+      word: Una palabra. Ej. "CAMPO"
+      secret: Una palabra. Ej. "CREMA"
+    Returns:
+      same_position: Lista de posiciones de word cuyas letras coinciden en la misma posición en secret. En el caso anterior: [0]
+      same_letter: Lista de posiciones de word cuyas letras están en secret pero en posiciones distintas. En el caso anterior: [1,2]
+    """
+    word = word.upper()
+    secret = secret.upper()
+
+    if len(word) != len(secret):
+      raise ValueError("Las palabras no tienen la misma longitud")
+    same_position = 0
+    same_letter = 0
+
+    
+    for letra in word:
+      
+    
 
 def print_word():
     """Dada una palabra, una lista same_position y otra lista same_letter, esta función creará un string donde aparezcan en mayúsculas las letras de la palabra que ocupen las posiciones de same_position, en minúsculas las letras de la palabra que ocupen las posiciones de same_letter y un guión (-) en el resto de posiciones
