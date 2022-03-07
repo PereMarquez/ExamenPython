@@ -61,6 +61,11 @@ def print_word(word, same_letter_position, same_letter):
   Returns:
     transformed: La palabra aplicando las transformaciones. En el caso anterior: "Cam--"
   """
+  transformed=""
+  for letra_word in word:
+    
+
+print(word)
     
 def choose_secret_advanced():
     """Dado un nombre de fichero, esta función filtra solo las palabras de 5 letras que no tienen acentos (á,é,í,ó,ú). De estas palabras, la función devuelve una lista de 15 aleatorias no repetidas y una de estas 15, se selecciona aleatoriamente como palabra secret.
@@ -79,3 +84,17 @@ def check_valid_word():
       word: Palabra introducida por el usuario que está en la lista.
     """
 
+"""
+if __name__ == "__main__":
+    secret=choose_secret()
+    print("Palabra a adivinar: "+secret)#Debug: esto es para que sepas la palabra que debes adivinar
+    for repeticiones in range(0,6):
+        word = input("Introduce una nueva palabra: ")
+        same_position, same_letter = compare_words()
+        resultado=print_word()
+        print(resultado)
+        if word == secret:
+            print("HAS GANADO!!")
+            exit()
+    print("LO SIENTO, NO LA HAS ADIVINIDADO. LA PALABRA ERA "+secret)   
+"""
